@@ -11,7 +11,7 @@ selective tool-disable via env vars.
 mcphost (mark3labs/mcphost — the runtime host)
       │  loads config, runs LLM, handles tool-calling loop
       ▼
-  mcp-agama  ←─ YOU BUILD THIS
+  mcp-agama  
       ├── agama_status()          GET  /api/v2/status
       ├── agama_system()          GET  /api/v2/system
       ├── agama_config()          GET  /api/v2/config
@@ -148,9 +148,7 @@ uv run pytest
 
 ## Contribution ideas
 
-- **docs PR to agama-project/agama**: `doc/http_api.md` is missing
-  `extended_config` and the `questions` PATCH schema — low-risk, high-visibility.
-- **`query_docs()` tool**: vector store (Qdrant/ChromaDB) fed by `agama_system()`
+- **`query_docs()` tool**: vector store (Qdrant/ChromaDB or even OpenViking) fed by `agama_system()`
   output — lets the AI answer "what disks do I have?" from cached context.
 - **WebSocket events tool**: Agama emits real-time progress via `/api/ws` —
   a streaming `agama_events()` tool would eliminate polling.
