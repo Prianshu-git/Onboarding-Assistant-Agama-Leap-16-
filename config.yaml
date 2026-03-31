@@ -1,0 +1,42 @@
+# ── mcphost config ────────────────────────────────────────────────────────────
+# Save as: ~/.config/mcphost/config.yaml
+# Run with: mcphost --config ~/.config/mcphost/config.yaml
+#
+# mcphost is the runtime host (mark3labs/mcphost) — it loads the LLM and wires
+# it to your MCP servers. You build the server; mcphost handles orchestration.
+# ──────────────────────────────────────────────────────────────────────────────
+
+mcpServers:
+  agama:
+    # agama-mcp runs over HTTP/SSE transport (same as mcp-bugzilla)
+    # Start the server first: uv run mcp-agama --agama-server http://localhost/api
+    url: "http://127.0.0.1:8000/mcp"
+
+# Optional: add other MCP servers alongside agama-mcp
+# mcp-bugzilla is a natural companion for the openSUSE ecosystem:
+#   bugzilla:
+#     url: "http://127.0.0.1:8001/mcp"
+
+---
+# ── Claude Desktop config snippet ─────────────────────────────────────────────
+# Merge into: ~/Library/Application Support/Claude/claude_desktop_config.json
+# (macOS) or %APPDATA%\Claude\claude_desktop_config.json (Windows)
+#
+# {
+#   "mcpServers": {
+#     "agama": {
+#       "command": "uv",
+#       "args": [
+#         "run",
+#         "--directory", "/path/to/agama-mcp",
+#         "mcp-agama",
+#         "--transport", "stdio",
+#         "--agama-server", "http://192.168.122.100/api"
+#       ],
+#       "env": {
+#         "AGAMA_PASSWORD": "linux",
+#         "MCP_READ_ONLY": "false"
+#       }
+#     }
+#   }
+# }

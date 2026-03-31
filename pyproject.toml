@@ -1,0 +1,33 @@
+[project]
+name = "mcp-agama"
+version = "0.1.0"
+description = "MCP server for the Agama openSUSE/SUSE installer — AI onboarding assistant for Leap 16"
+readme = "README.md"
+requires-python = "==3.13.*"
+
+dependencies = [
+    "fastmcp>=2.0.0",
+    "httpx-retries>=0.4.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "uv",
+    "pytest",
+    "pytest-asyncio",
+    "respx",
+]
+
+[project.scripts]
+mcp-agama = "mcp_agama:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["mcp_agama"]
+
+[build-system]
+requires = ["uv_build>=0.9.11,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
